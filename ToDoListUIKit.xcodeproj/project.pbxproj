@@ -13,6 +13,7 @@
 		AFAA32C5297C03BC00345545 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAA32C3297C03BC00345545 /* Main.storyboard */; };
 		AFAA32C7297C03BE00345545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAA32C6297C03BE00345545 /* Assets.xcassets */; };
 		AFAA32CA297C03BE00345545 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAA32C8297C03BE00345545 /* LaunchScreen.storyboard */; };
+		AFAA32D4297EDE1700345545 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA32D3297EDE1700345545 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AFAA32C6297C03BE00345545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFAA32C9297C03BE00345545 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAA32CB297C03BE00345545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFAA32D3297EDE1700345545 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				AFAA32BD297C03BC00345545 /* AppDelegate.swift */,
 				AFAA32BF297C03BC00345545 /* SceneDelegate.swift */,
 				AFAA32C1297C03BC00345545 /* ViewController.swift */,
+				AFAA32D3297EDE1700345545 /* DetailViewController.swift */,
 				AFAA32C3297C03BC00345545 /* Main.storyboard */,
 				AFAA32C6297C03BE00345545 /* Assets.xcassets */,
 				AFAA32C8297C03BE00345545 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				AFAA32C2297C03BC00345545 /* ViewController.swift in Sources */,
 				AFAA32BE297C03BC00345545 /* AppDelegate.swift in Sources */,
 				AFAA32C0297C03BC00345545 /* SceneDelegate.swift in Sources */,
+				AFAA32D4297EDE1700345545 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +306,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nadia.ToDoListUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -330,6 +337,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nadia.ToDoListUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
