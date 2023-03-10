@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFA71E5129BBC31800FE97CB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA71E5029BBC31800FE97CB /* ToDoItem.swift */; };
 		AFAA32BE297C03BC00345545 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA32BD297C03BC00345545 /* AppDelegate.swift */; };
 		AFAA32C0297C03BC00345545 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA32BF297C03BC00345545 /* SceneDelegate.swift */; };
 		AFAA32C2297C03BC00345545 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA32C1297C03BC00345545 /* ListViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AFA71E5029BBC31800FE97CB /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		AFAA32BA297C03BC00345545 /* ToDoListUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAA32BD297C03BC00345545 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAA32BF297C03BC00345545 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				AFAA32BD297C03BC00345545 /* AppDelegate.swift */,
 				AFAA32BF297C03BC00345545 /* SceneDelegate.swift */,
 				AFAA32C1297C03BC00345545 /* ListViewController.swift */,
+				AFA71E5029BBC31800FE97CB /* ToDoItem.swift */,
 				AFAA32D3297EDE1700345545 /* DetailViewController.swift */,
 				AFAA32C3297C03BC00345545 /* Main.storyboard */,
 				AFAA32C6297C03BE00345545 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			files = (
 				AFAA32C2297C03BC00345545 /* ListViewController.swift in Sources */,
 				AFAA32BE297C03BC00345545 /* AppDelegate.swift in Sources */,
+				AFA71E5129BBC31800FE97CB /* ToDoItem.swift in Sources */,
 				AFAA32C0297C03BC00345545 /* SceneDelegate.swift in Sources */,
 				AFAA32D4297EDE1700345545 /* DetailViewController.swift in Sources */,
 			);

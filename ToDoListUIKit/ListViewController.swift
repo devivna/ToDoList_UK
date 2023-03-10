@@ -13,6 +13,9 @@ class ListViewController: UIViewController {
     //      register cell in the IB
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var addBarButton: UIBarButtonItem!
+    
+    
     // set array of data to hold information in the cells
     var arrayOfData = [
     "Element 1",
@@ -54,6 +57,21 @@ class ListViewController: UIViewController {
             tableView.scrollToRow(at: newIndex, at: .bottom, animated: true)
         }
     }
+    
+    @IBAction func editButtonPresed(_ sender: UIBarButtonItem) {
+        if tableView.isEditing {
+            // not editing
+            tableView.setEditing(false, animated: true)
+            sender.title = "Edit"
+            addBarButton.isEnabled = true
+        } else {
+            // when editing
+            tableView.setEditing(true, animated: true)
+            sender.title = "Done"
+            addBarButton.isEnabled = false
+        }
+        
+    }
 }
 
 extension ListViewController: UITableViewDelegate {
@@ -71,5 +89,12 @@ extension ListViewController: UITableViewDataSource {
         cell.textLabel?.text = arrayOfData[indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let itemToMove = arrayOfData[sourceIndexPath.row]
+        arrayOfData.remove(at: sourceIndexPath.row)
+        arrayOfData.insert(itemToMove, at: destinationIndexPath.row)
+    }
+    
 }
 
