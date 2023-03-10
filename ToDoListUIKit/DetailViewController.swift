@@ -13,19 +13,30 @@ class DetailViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var noteView: UITextView!
 
-    var item: String!
+    var item: ToDoItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if item == nil {
-            item = ""
+            item = ToDoItem(name: "", date: Date(), note: "")
         }
-        itemField.text = item
+        
+        itemField.text = item.name
+        datePicker.date = item.date
+        noteView.text = item.note
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        item = itemField.text
+        
+        item = ToDoItem(
+            name: itemField.text!,
+            date: datePicker.date,
+            note: noteView.text
+        )
+//        item.name = itemField.text!
+//        item.date = datePicker.date
+//        item.note = noteView.text
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {

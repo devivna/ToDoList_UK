@@ -15,15 +15,8 @@ class ListViewController: UIViewController {
     
     @IBOutlet var addBarButton: UIBarButtonItem!
     
-    
     // set array of data to hold information in the cells
-    var arrayOfData = [
-    "Element 1",
-    "Element 2",
-    "Element 3",
-    "Element 4",
-    "Element 5"
-        ]
+    var toDoItems = [ToDoItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +30,7 @@ class ListViewController: UIViewController {
         if segue.identifier == "showDetail" {
             let destination = segue.destination as! DetailViewController
             let index = tableView.indexPathForSelectedRow
-            destination.item = arrayOfData[index!.row]
+            destination.item = toDoItems[index!.row]
         } else {
             if let index = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: index, animated: false)
@@ -48,11 +41,11 @@ class ListViewController: UIViewController {
     @IBAction func umwing(segue: UIStoryboardSegue) {
         let source = segue.source as! DetailViewController
         if let index = tableView.indexPathForSelectedRow {
-            arrayOfData[index.row] = source.item
+            toDoItems[index.row] = source.item
             tableView.reloadRows(at: [index], with: .automatic)
         } else {
-            let newIndex = IndexPath(row: arrayOfData.count, section: 0)
-            arrayOfData.append(source.item)
+            let newIndex = IndexPath(row: toDoItems.count, section: 0)
+            toDoItems.append(source.item)
             tableView.insertRows(at: [newIndex], with: .bottom)
             tableView.scrollToRow(at: newIndex, at: .bottom, animated: true)
         }
@@ -80,20 +73,27 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfData.count
+        return toDoItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = arrayOfData[indexPath.row]
+        cell.textLabel?.text = toDoItems[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let itemToMove = arrayOfData[sourceIndexPath.row]
-        arrayOfData.remove(at: sourceIndexPath.row)
-        arrayOfData.insert(itemToMove, at: destinationIndexPath.row)
+        let itemToMove = toDoItems[sourceIndexPath.row]
+        toDoItems.remove(at: sourceIndexPath.row)
+        toDoItems.insert(itemToMove, at: destinationIndexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            toDoItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
 }
