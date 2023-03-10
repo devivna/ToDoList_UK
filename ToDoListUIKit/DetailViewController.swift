@@ -9,25 +9,34 @@ import UIKit
 
 class DetailViewController: UITableViewController {
 
-    @IBOutlet weak var itemField: UITableViewCell!
+    @IBOutlet weak var itemField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var noteView: UITextView!
 
+    var item: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if item == nil {
+            item = ""
+        }
+        itemField.text = item
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        item = itemField.text
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         
-        let isPresentedInAddMode = presentingViewController is UINavigationController
+        let isPresentedAddMode = presentingViewController is UINavigationController
         
-        if isPresentedInAddMode {
+        if isPresentedAddMode {
             dismiss(animated: true)
         } else {
             navigationController?.popViewController(animated: true)
         }
-        
     }
 
 }
