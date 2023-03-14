@@ -18,7 +18,6 @@ class ListViewController: UIViewController {
     // set array of data to hold information in the cells
     var toDoItems = [ToDoItem]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

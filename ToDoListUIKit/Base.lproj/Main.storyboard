@@ -140,6 +140,9 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="5YF-hr-g8S">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="216.33333333333334"/>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="IZG-bO-yGQ" eventType="valueChanged" id="xG8-QN-uVF"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -203,7 +206,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dataLabel" destination="XEF-yt-WTw" id="dB9-gz-GFV"/>
+                        <outlet property="dateLabel" destination="XEF-yt-WTw" id="dB9-gz-GFV"/>
                         <outlet property="datePicker" destination="5YF-hr-g8S" id="UQd-H4-RaN"/>
                         <outlet property="itemField" destination="XLN-Y3-1WF" id="ddd-kE-cyu"/>
                         <outlet property="noteView" destination="Gjb-oO-PME" id="NLa-eK-S0s"/>
