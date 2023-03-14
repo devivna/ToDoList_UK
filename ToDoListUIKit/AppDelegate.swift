@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // current = current UserNotificationCenter on this device
+        UNUserNotificationCenter.current().delegate = self
+        
         return true
     }
 
@@ -34,3 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate  {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        // set id for a notification
+        let id = notification.request.identifier
+        print("Received in-app notification with ID = \(id)")
+        
+        // remove notification from Notifications Queue
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
+        // set what options you want to see, listen when show a notification
+        completionHandler([.banner, .sound])
+    }
+}

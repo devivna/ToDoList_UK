@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ListViewController: UIViewController {
     
@@ -25,7 +26,59 @@ class ListViewController: UIViewController {
         tableView.dataSource = self
         
         loadData()
+        authorizeLocalNotifications()
     }
+    
+    // set unique value for every notifications
+    func setCalendarNotification(title: String, subtitle: String, body: String, badgeNumber: NSNumber?, sound: UNNotificationSound?, date: Date) -> String {
+        
+        // create content
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subtitle
+        content.body = body
+        content.badge = badgeNumber
+        content.sound = sound
+        
+        // create trigger -> need dateComponents
+        var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        dateComponents.second = 00 // set seconds to 0 : not count second in out time
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        // create request -> need identifier: String, content: UNNotificationContent, trigger: UNNotificationTrigger?
+        let notificationID = UUID().uuidString
+        // notificationID from AppDelegate func willPresent
+        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
+        
+        //Register request with the notification center -> request: UNNotificationRequest
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Notification schedule \(notificationID), title: \(content.title)")
+            }
+        }
+        
+        return notificationID
+    }
+    
+    func authorizeLocalNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { granted, error in
+            
+            guard error == nil else {
+                print("😡 Error: \(error!.localizedDescription)")
+                return
+            }
+            
+            if granted {
+                print("✅ Notification allowed")
+            } else {
+                print("❌ Notification NOT allowed")
+            }
+        }
+    }
+    
     
     func loadData() {
         let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -52,6 +105,9 @@ class ListViewController: UIViewController {
         } catch {
             print("Error: Could not save data \(error.localizedDescription)")
         }
+        
+        let toDoItem = toDoItems.first!
+        let notificationID = setCalendarNotification(title: toDoItem.name, subtitle: "Subtitle", body: toDoItem.note, badgeNumber: nil, sound: .default, date: toDoItem.date)
     }
     
     
