@@ -29,6 +29,23 @@ class ListViewController: UIViewController {
         authorizeLocalNotifications()
     }
     
+    func setNotifications() {
+        guard toDoItems.count > 0 else {
+            return
+        }
+        
+        // remove all notifications (if you add new element - their order may changed and impact on notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        //re-create them with the updated data that we just saved
+        for index in 0..<toDoItems.count {
+            if toDoItems[index].reminderSet {
+                let item = toDoItems[index]
+                toDoItems[index].notificationID = setCalendarNotification(title: item.name, subtitle: "", body: item.note, badgeNumber: nil, sound: .default, date: item.date)
+            }
+        }
+    }
+    
     // set unique value for every notifications
     func setCalendarNotification(title: String, subtitle: String, body: String, badgeNumber: NSNumber?, sound: UNNotificationSound?, date: Date) -> String {
         
@@ -106,8 +123,7 @@ class ListViewController: UIViewController {
             print("Error: Could not save data \(error.localizedDescription)")
         }
         
-        let toDoItem = toDoItems.first!
-        let notificationID = setCalendarNotification(title: toDoItem.name, subtitle: "Subtitle", body: toDoItem.note, badgeNumber: nil, sound: .default, date: toDoItem.date)
+        setNotifications()
     }
     
     
