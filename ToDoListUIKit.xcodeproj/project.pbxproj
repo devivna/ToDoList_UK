@@ -15,6 +15,7 @@
 		AFAA32C7297C03BE00345545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAA32C6297C03BE00345545 /* Assets.xcassets */; };
 		AFAA32CA297C03BE00345545 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAA32C8297C03BE00345545 /* LaunchScreen.storyboard */; };
 		AFAA32D4297EDE1700345545 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA32D3297EDE1700345545 /* DetailViewController.swift */; };
+		AFDD284929C22860009D65CB /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD284829C22860009D65CB /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AFAA32C9297C03BE00345545 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAA32CB297C03BE00345545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFAA32D3297EDE1700345545 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AFDD284829C22860009D65CB /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				AFAA32C1297C03BC00345545 /* ListViewController.swift */,
 				AFA71E5029BBC31800FE97CB /* ToDoItem.swift */,
 				AFAA32D3297EDE1700345545 /* DetailViewController.swift */,
+				AFDD284829C22860009D65CB /* ListTableViewCell.swift */,
 				AFAA32C3297C03BC00345545 /* Main.storyboard */,
 				AFAA32C6297C03BE00345545 /* Assets.xcassets */,
 				AFAA32C8297C03BE00345545 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				AFA71E5129BBC31800FE97CB /* ToDoItem.swift in Sources */,
 				AFAA32C0297C03BC00345545 /* SceneDelegate.swift in Sources */,
 				AFAA32D4297EDE1700345545 /* DetailViewController.swift in Sources */,
+				AFDD284929C22860009D65CB /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

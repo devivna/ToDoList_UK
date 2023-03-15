@@ -20,14 +20,48 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="DIK-QI-y5X">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="DIK-QI-y5X" customClass="ListTableViewCell" customModule="ToDoListUIKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DIK-QI-y5X" id="r5X-jf-i5y">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-Pe-oke">
+                                                    <rect key="frame" x="20" y="4" width="50" height="35.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="PVU-1c-sX9"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="fsv-dM-0nZ"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Button" image="rectangle" catalog="system"/>
+                                                    <state key="selected" image="xmark.rectangle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="checkToggled:" destination="DIK-QI-y5X" eventType="touchUpInside" id="PMb-W9-62B"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69g-TB-RPm">
+                                                    <rect key="frame" x="78" y="10.999999999999998" width="295" height="21.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1ZJ-Pe-oke" firstAttribute="centerY" secondItem="r5X-jf-i5y" secondAttribute="centerY" id="2ko-Ao-ulQ"/>
+                                                <constraint firstItem="69g-TB-RPm" firstAttribute="trailing" secondItem="r5X-jf-i5y" secondAttribute="trailingMargin" id="3Wc-1m-EXf"/>
+                                                <constraint firstItem="69g-TB-RPm" firstAttribute="top" secondItem="r5X-jf-i5y" secondAttribute="topMargin" id="B8v-pK-9ga"/>
+                                                <constraint firstItem="1ZJ-Pe-oke" firstAttribute="leading" secondItem="r5X-jf-i5y" secondAttribute="leading" constant="20" id="Eu9-tj-ybC"/>
+                                                <constraint firstItem="69g-TB-RPm" firstAttribute="centerY" secondItem="1ZJ-Pe-oke" secondAttribute="centerY" id="Hos-sI-3KN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="69g-TB-RPm" secondAttribute="bottom" id="Oqa-FC-1Pw"/>
+                                                <constraint firstItem="69g-TB-RPm" firstAttribute="leading" secondItem="1ZJ-Pe-oke" secondAttribute="trailing" constant="8" symbolic="YES" id="WBB-nv-8Qh"/>
+                                                <constraint firstItem="1ZJ-Pe-oke" firstAttribute="top" secondItem="r5X-jf-i5y" secondAttribute="topMargin" constant="-7" id="qnE-qZ-GdD"/>
+                                                <constraint firstItem="69g-TB-RPm" firstAttribute="top" secondItem="r5X-jf-i5y" secondAttribute="topMargin" id="sv6-fV-WQB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkBoxButton" destination="1ZJ-Pe-oke" id="J2c-UY-3YQ"/>
+                                            <outlet property="nameLabel" destination="69g-TB-RPm" id="csT-bp-UQm"/>
                                             <segue destination="IZG-bO-yGQ" kind="show" identifier="showDetail" id="a9M-yU-rxa"/>
                                         </connections>
                                     </tableViewCell>
@@ -104,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="162.33333206176758" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XLT-3z-2ZH" id="wyv-gd-Yux">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEF-yt-WTw">
@@ -260,6 +294,8 @@
         <segue reference="a9M-yU-rxa"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="rectangle" catalog="system" width="128" height="93"/>
+        <image name="xmark.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

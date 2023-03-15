@@ -37,7 +37,7 @@ class DetailViewController: UITableViewController {
         super.viewDidLoad()
         
         if item == nil {
-            item = ToDoItem(name: "", date: Date().addingTimeInterval(24*60*60), note: "", reminderSet: false)
+            item = ToDoItem(name: "", date: Date().addingTimeInterval(24*60*60), note: "", reminderSet: false, isComplited: false)
         }
         
         //dateLabel.text = "\(dateFormatter.string(from: Date()))"
@@ -60,7 +60,8 @@ class DetailViewController: UITableViewController {
             name: itemField.text!,
             date: datePicker.date,
             note: noteView.text,
-            reminderSet: switchRemainder.isOn
+            reminderSet: switchRemainder.isOn,
+            isComplited: item.isComplited // ?
         )
 //        item.name = itemField.text!
 //        item.date = datePicker.date

@@ -180,8 +180,15 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = toDoItems[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
+       
+        // set delegate of cell to VC
+        cell.delegate = self
+        
+        // set connection with properties of ListTableViewCell and array of Data
+        cell.nameLabel.text = toDoItems[indexPath.row].name
+        cell.checkBoxButton.isSelected = toDoItems[indexPath.row].isComplited
+        
         return cell
     }
     
@@ -200,5 +207,15 @@ extension ListViewController: UITableViewDataSource {
         }
     }
     
+}
+
+extension ListViewController: ListTableViewDelegate {
+    func checkBoxToggle(sender: ListTableViewCell) {
+        if let selectedIndexPath = tableView.indexPath(for: sender) {
+            toDoItems[selectedIndexPath.row].isComplited = !toDoItems[selectedIndexPath.row].isComplited
+            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+            saveData()
+        }
+    }
 }
 
