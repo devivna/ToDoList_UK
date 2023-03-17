@@ -186,8 +186,9 @@ extension ListViewController: UITableViewDataSource {
         cell.delegate = self
         
         // set connection with properties of ListTableViewCell and array of Data
-        cell.nameLabel.text = toDoItems[indexPath.row].name
-        cell.checkBoxButton.isSelected = toDoItems[indexPath.row].isComplited
+        cell.item = toDoItems[indexPath.row]
+//        cell.nameLabel.text = toDoItems[indexPath.row].name
+//        cell.checkBoxButton.isSelected = toDoItems[indexPath.row].isComplited
         
         return cell
     }
