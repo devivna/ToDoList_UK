@@ -33,11 +33,21 @@ class DetailViewController: UITableViewController {
     let notesHeight: CGFloat = 200
     let defaultHeight: CGFloat = 44
     
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        itemField.delegate = self
+        
+        // hide keyboard if we tap outside of a field
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         if item == nil {
             item = ToDoItem(name: "", date: Date().addingTimeInterval(24*60*60), note: "", reminderSet: false, isComplited: false)
+            itemField.becomeFirstResponder()
         }
         
         //dateLabel.text = "\(dateFormatter.string(from: Date()))"
@@ -52,6 +62,16 @@ class DetailViewController: UITableViewController {
         dateLabel.text = dateFormatter.string(from: item.date)
        
         dateLabel.textColor = (switchRemainder.isOn ? .black : .gray)
+        
+        enableDisableSaveButton(text: itemField.text!)
+    }
+    
+    func enableDisableSaveButton(text: String) {
+        if text.count > 0 {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,7 +89,6 @@ class DetailViewController: UITableViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        
         let isPresentedAddMode = presentingViewController is UINavigationController
         
         if isPresentedAddMode {
@@ -80,6 +99,7 @@ class DetailViewController: UITableViewController {
     }
 
     @IBAction func switchChanged(_ sender: UISwitch) {
+        self.view.endEditing(true)
         dateLabel.textColor = switchRemainder.isOn ? .black : .gray
         
         tableView.beginUpdates()
@@ -87,9 +107,17 @@ class DetailViewController: UITableViewController {
     }
     
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        self.view.endEditing(true)
         dateLabel.text = dateFormatter.string(from: sender.date)
     }
+        
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        enableDisableSaveButton(text: sender.text!)
+    }
     
+}
+
+extension DetailViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case datePickerIndexPath:
@@ -102,15 +130,10 @@ class DetailViewController: UITableViewController {
     }
 }
 
-//extension DetailViewController {
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch indexPath {
-//        case datePickerIndexPath:
-//            return switchRemainder.isOn ? datePicker.frame.height : 0
-//        case notesIndexPath:
-//            return notesHeight
-//        default:
-//            return defaultHeight
-//        }
-//    }
-//}
+extension DetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        noteView.becomeFirstResponder()
+        return true
+    }
+}
+

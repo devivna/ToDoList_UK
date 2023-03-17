@@ -21,14 +21,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="DIK-QI-y5X" customClass="ListTableViewCell" customModule="ToDoListUIKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DIK-QI-y5X" id="r5X-jf-i5y">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-Pe-oke">
-                                                    <rect key="frame" x="20" y="4" width="50" height="35.333333333333336"/>
+                                                    <rect key="frame" x="20" y="4" width="50" height="35.666666666666664"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="PVU-1c-sX9"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="fsv-dM-0nZ"/>
@@ -41,7 +41,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69g-TB-RPm">
-                                                    <rect key="frame" x="78" y="10.999999999999998" width="295" height="21.333333333333329"/>
+                                                    <rect key="frame" x="78" y="11.000000000000002" width="295" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -120,6 +120,10 @@
                                                     <rect key="frame" x="20" y="0.0" width="381" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="IZG-bO-yGQ" eventType="editingChanged" id="3nf-EO-d0m"/>
+                                                        <action selector="textFieldEditingChanged:" destination="IZG-bO-yGQ" eventType="editingDidEnd" id="qw8-MK-A5l"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -142,7 +146,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEF-yt-WTw">
-                                                    <rect key="frame" x="89" y="11" width="284" height="22"/>
+                                                    <rect key="frame" x="89" y="10.999999999999998" width="284" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -244,6 +248,7 @@
                         <outlet property="datePicker" destination="5YF-hr-g8S" id="UQd-H4-RaN"/>
                         <outlet property="itemField" destination="XLN-Y3-1WF" id="ddd-kE-cyu"/>
                         <outlet property="noteView" destination="Gjb-oO-PME" id="NLa-eK-S0s"/>
+                        <outlet property="saveBarButton" destination="iEH-H9-ckr" id="wpM-wQ-f75"/>
                         <outlet property="switchRemainder" destination="prp-yQ-bQG" id="Pa9-gv-qmN"/>
                     </connections>
                 </tableViewController>
